@@ -84,7 +84,6 @@ String ReadSerialString() {
 }
 
 
-
 void loop() {
 	// If receives sothing from serial...
 	if (Serial.available() > 0) {
@@ -125,9 +124,17 @@ void loop() {
 	{
 		if (side == 0) {
 			lPwm.setPWM(servo, 0, freq);
+			Serial.print(" -> Moved: Left Servo ");
+			Serial.print(servo);
+			Serial.print(" to Frequency ");
+			Serial.println(freq);
 		}
 		else {
 			rPwm.setPWM(servo, 0, freq);
+			Serial.print(" -> Moved: Right Servo ");
+			Serial.print(servo);
+			Serial.print(" to Frequency ");
+			Serial.println(freq);
 		}
 		freq = -1;
 		delay(2000);
