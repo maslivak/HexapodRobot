@@ -11,6 +11,15 @@ int servo = -1;
 int freq = -1;
 int side = 0;
 
+int legs[6][3];
+
+void initLlegParameters{
+  //leg 0
+  legs[0][0] = 0;   //min value
+  legs[0][1] = 600; //max value
+  legs[0][2] = 300; //initial value
+}
+
 void setup() {
 
 	servo = -1;
@@ -30,6 +39,8 @@ void setup() {
 
 	yield();
 }
+
+
 
 void InitialPosition() {
 
