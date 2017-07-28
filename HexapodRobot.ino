@@ -4,23 +4,43 @@
 Adafruit_PWMServoDriver rPwm = Adafruit_PWMServoDriver(0x40);
 Adafruit_PWMServoDriver lPwm = Adafruit_PWMServoDriver(0x41);
 
-#define SERVOMIN  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX  600 // this is the 'maximum' pulse length count (out of 4096)
-
 int servo = -1;
 int freq = -1;
 int side = 0;
 
-int legs[6][3];
+#define SERV_QTY 9
+#define PROP_QTY 3
 
-void initLlegParameters{
-  //leg 0
-  legs[0][0] = 0;   //min value
-  legs[0][1] = 600; //max value
-  legs[0][2] = 300; //initial value
+uint8_t rServos[SERV_QTY][PROP_QTY];
+uint8_t lServos[SERV_QTY][PROP_QTY];
+
+void initServoParameters() {
+
+	//Leg 0
+	rServos[0][0] = 260; //min value
+	rServos[0][1] = 590; //max value
+	rServos[0][2] = 300; //initial value
+
+	//Leg 0
+	rServos[1][0] = 90; //min value 90
+	rServos[1][1] = 0; //max value
+	rServos[1][2] = 0; //initial value
+
+	//Leg 0 
+	rServos[2][0] = 0; //min value
+	rServos[2][1] = 0; //max value
+	rServos[2][2] = 0; //initial value
+
+	//Leg 1
+	rServos[3][0] = 0; //min value
+	rServos[3][1] = 0; //max value
+	rServos[3][2] = 0; //initial value
+
 }
 
 void setup() {
+
+	initServoParameters();
 
 	servo = -1;
 	freq = -1;
@@ -30,10 +50,10 @@ void setup() {
 	Serial.write("Power On");
 
 	rPwm.begin();
-	rPwm.setPWMFreq(75);  // Analog servos run at ~60 Hz updates
+	rPwm.setPWMFreq(60);  // Analog servos run at ~60 Hz updates
 
 	lPwm.begin();
-	lPwm.setPWMFreq(75);  // Analog servos run at ~60 Hz updates
+	lPwm.setPWMFreq(60);  // Analog servos run at ~60 Hz updates
 
 	InitialPosition();
 
@@ -43,32 +63,11 @@ void setup() {
 
 
 void InitialPosition() {
-
-	rPwm.setPWM(0, 0, 460);
-	rPwm.setPWM(1, 0, 725);
-	rPwm.setPWM(2, 0, 680);
-
-	rPwm.setPWM(3, 0, 325);
-	rPwm.setPWM(4, 0, 725);
-	rPwm.setPWM(5, 0, 680);
-
-	rPwm.setPWM(6, 0, 325);
-	rPwm.setPWM(7, 0, 725);
-	rPwm.setPWM(8, 0, 680);
-
-
-	lPwm.setPWM(0, 0, 340);
-	lPwm.setPWM(1, 0, 225);
-	lPwm.setPWM(2, 0, 225);
-
-	lPwm.setPWM(3, 0, 425);
-	lPwm.setPWM(4, 0, 225);
-	lPwm.setPWM(5, 0, 225);
-
-	lPwm.setPWM(6, 0, 425);
-	lPwm.setPWM(7, 0, 225);
-	lPwm.setPWM(8, 0, 225);
-
+	for (uint8_t i = 0; i < SERV_QTY; i++)
+	{
+		rPwm.setPWM(i, 0, rServos[i][3]);
+		lPwm.setPWM(i, 0, lServos[i][3]);
+	}
 	Serial.println(" -> Reseted to Initial Position! ");
 }
 
