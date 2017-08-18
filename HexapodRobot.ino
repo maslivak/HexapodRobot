@@ -11,31 +11,88 @@ int side = 0;
 #define SERV_QTY 9
 #define PROP_QTY 3
 
-uint8_t rServos[SERV_QTY][PROP_QTY];
-uint8_t lServos[SERV_QTY][PROP_QTY];
+uint16_t rServos[SERV_QTY][PROP_QTY];
+uint16_t lServos[SERV_QTY][PROP_QTY];
 
 void initServoParameters() {
-
+	//Set max, min and initial values for all servos...
 	//Leg 0
-	rServos[0][0] = 260; //min value
-	rServos[0][1] = 590; //max value
-	rServos[0][2] = 300; //initial value
+		rServos[0][0] = 260; //min value
+		rServos[0][1] = 590; //max value
+		rServos[0][2] = 300; //initial value
 
-	//Leg 0
-	rServos[1][0] = 90; //min value 90
-	rServos[1][1] = 0; //max value
-	rServos[1][2] = 0; //initial value
+		rServos[1][0] = 90; //min value 90
+		rServos[1][1] = 0;  //max value
+		rServos[1][2] = 0;  //initial value
 
-	//Leg 0 
-	rServos[2][0] = 0; //min value
-	rServos[2][1] = 0; //max value
-	rServos[2][2] = 0; //initial value
+		rServos[2][0] = 0;  //min value
+		rServos[2][1] = 0;  //max value
+		rServos[2][2] = 0;  //initial value
 
 	//Leg 1
-	rServos[3][0] = 0; //min value
-	rServos[3][1] = 0; //max value
-	rServos[3][2] = 0; //initial value
+		rServos[3][0] = 0;  //min value
+		rServos[3][1] = 0;  //max value
+		rServos[3][2] = 0;  //initial value
 
+		rServos[4][0] = 0;  //min value
+		rServos[4][1] = 0;  //max value
+		rServos[4][2] = 0;  //initial value
+
+		rServos[5][0] = 0;  //min value
+		rServos[5][1] = 0;  //max value
+		rServos[5][2] = 0;  //initial value
+
+	//Leg 2
+		rServos[6][0] = 0;  //min value
+		rServos[6][1] = 0;  //max value
+		rServos[6][2] = 0;  //initial value
+
+		rServos[7][0] = 0;  //min value
+		rServos[7][1] = 0;  //max value
+		rServos[7][2] = 0;  //initial value
+
+		rServos[8][0] = 0;  //min value
+		rServos[8][1] = 0;  //max value
+		rServos[8][2] = 0;  //initial value
+
+	//Leg 3
+		lServos[0][0] = 0;  //min value
+		lServos[0][1] = 0;  //max value
+		lServos[0][2] = 0;  //initial value
+
+		lServos[1][0] = 0;  //min value 90
+		lServos[1][1] = 0;  //max value
+		lServos[1][2] = 0;  //initial value
+
+		lServos[2][0] = 0;  //min value
+		lServos[2][1] = 0;  //max value
+		lServos[2][2] = 0;  //initial value
+
+	//Leg 4
+		lServos[3][0] = 0;  //min value
+		lServos[3][1] = 0;  //max value
+		lServos[3][2] = 0;  //initial value
+
+		lServos[4][0] = 0;  //min value
+		lServos[4][1] = 0;  //max value
+		lServos[4][2] = 0;  //initial value
+
+		lServos[5][0] = 0;  //min value
+		lServos[5][1] = 0;  //max value
+		lServos[5][2] = 0;  //initial value
+
+	//Leg 5
+		lServos[6][0] = 0;  //min value
+		lServos[6][1] = 0;  //max value
+		lServos[6][2] = 0;  //initial value
+
+		lServos[7][0] = 0;  //min value
+		lServos[7][1] = 0;  //max value
+		lServos[7][2] = 0;  //initial value
+
+		lServos[8][0] = 0;  //min value
+		lServos[8][1] = 0;  //max value
+		lServos[8][2] = 0;  //initial value
 }
 
 void setup() {
@@ -95,7 +152,7 @@ String ReadSerialString() {
 
 
 void loop() {
-	// If receives sothing from serial...
+	// If receives something from serial...
 	if (Serial.available() > 0) {
 		// read string received
 		String received = ReadSerialString();
